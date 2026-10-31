@@ -1,5 +1,8 @@
 # Jules Mod for Luanti / Minetest
 
+<p align="center">
+  <img src="google-jules.png" alt="Google Jules Mascot" width="160" />
+</p>
 > Jules will wind down on December 31, 2026. You have until November 11th to continue finishing up sessions. After the 11th of November, we will be turning it to read-only until end of year. Try using Google Antigravity for agentic development.
 
 > *"We say goodbye to Google Jules. Most loved tool in the world. GOODBYE."*
@@ -22,8 +25,8 @@ This mod was created in tribute following the announcement of Jules winding down
 - Uses a custom spotted purple egg texture (`jules_egg.png`).
 
 ### 3. Natural Spawning
-- Jules spawns naturally in the Luanti world!
-- Spawns at night / in dark subterranean areas (light level 0-8) on dirt and stone nodes (`group:dirt`, `group:stone`, `default:dirt_with_grass`, etc.).
+- Jules spawns naturally in the Luanti world at an incredibly high frequency across land at all times (day and night)!
+- Spawns across all land nodes including grass, dirt, sand, gravel, and stone surfaces.
 
 ### 4. Google Font Letter Blocks (`G`, `O`, `L`, `E`)
 - Four commemorative decorative building blocks rendered using Google's signature typeface (Roboto Bold) and Google's signature brand colors:
@@ -37,6 +40,9 @@ This mod was created in tribute following the announcement of Jules winding down
   - `dye:yellow` + `default:stone` $\rightarrow$ `jules:block_l`
   - `dye:green` + `default:stone` $\rightarrow$ `jules:block_e`
   - In addition, letter blocks can be cycled in a crafting grid: `G` $\rightarrow$ `O` $\rightarrow$ `L` $\rightarrow$ `E` $\rightarrow$ `G`.
+
+### 5. Random "GOOGLE" Word Placements
+- Horizontal 6-block rows spelling **GOOGLE** (`G` - `O` - `O` - `G` - `L` - `E`) generate randomly on surface land across the world.
 
 ---
 
