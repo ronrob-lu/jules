@@ -16,6 +16,7 @@ This mod was created in tribute following the announcement of Jules winding down
 ### 1. Jules Monster Mob (`jules:jules`)
 - Powered by the **Mobs Redo** (`mobs`) API.
 - Aggressive monster mob that roams the world, attacking players and hostile intruders.
+- Vulnerable to water and lava damage, and cannot swim or float (sinks in liquids).
 - Drops Google Font letter blocks (`jules:block_g`, `jules:block_o`, `jules:block_l`, `jules:block_e`) and mese crystal fragments when defeated.
 - Broadcasts a memorial message to the server chat upon death:
   > *"Goodbye Jules! You were the most loved tool in the world."*
