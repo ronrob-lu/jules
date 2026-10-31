@@ -1,7 +1,7 @@
 # Jules Mod for Luanti / Minetest
 
 <p align="center">
-  <img src="google-jules.png" alt="Google Jules Mascot" width="160" />
+  <img src="screenshot.png" alt="Jules Mod Screenshot" width="160" />
 </p>
 > Jules will wind down on December 31, 2026. You have until November 11th to continue finishing up sessions. After the 11th of November, we will be turning it to read-only until end of year. Try using Google Antigravity for agentic development.
 
