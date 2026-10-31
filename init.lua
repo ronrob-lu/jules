@@ -131,19 +131,119 @@ if minetest.global_exists("mobs") and mobs.register_mob then
     -- =================================================================
     -- 4. Register Natural Spawning
     -- =================================================================
+    -- Spawns on land at an incredibly high frequency every time (day and night)
     mobs:spawn({
         name = modname .. ":jules",
-        nodes = {"group:dirt", "group:stone", "default:dirt_with_grass", "default:dirt_with_coniferous_litter"},
+        nodes = {
+            "group:dirt",
+            "group:stone",
+            "group:sand",
+            "default:dirt_with_grass",
+            "default:dirt_with_dry_grass",
+            "default:dirt_with_coniferous_litter",
+            "default:dirt_with_rainforest_litter",
+            "default:dirt_with_snow",
+            "default:dry_dirt_with_dry_grass",
+            "default:desert_sand",
+            "default:sand",
+            "default:silver_sand",
+            "default:stone",
+            "default:desert_stone",
+            "default:gravel",
+        },
         neighbors = {"air"},
         min_light = 0,
-        max_light = 8,
-        interval = 30,
-        chance = 6000,
-        active_object_count = 2,
-        min_height = -31000,
+        max_light = 15,
+        interval = 1,
+        chance = 1,
+        active_object_count = 100,
+        min_height = 1,
         max_height = 31000,
-        day_toggle = false, -- spawns at night / in dark caves
+        day_toggle = nil,
     })
 else
     minetest.log("warning", "[jules] mobs_redo mod is missing! Jules monster could not be registered.")
+end
+
+-- =====================================================================
+-- 5. Randomly place "GOOGLE" locks/blocks in the world (6 blocks in a row)
+-- =====================================================================
+
+local google_letters = {
+    modname .. ":block_g",
+    modname .. ":block_o",
+    modname .. ":block_o",
+    modname .. ":block_g",
+    modname .. ":block_l",
+    modname .. ":block_e",
+}
+
+if minetest.register_on_generated then
+    minetest.register_on_generated(function(minp, maxp, seed)
+        -- Only generate above sea level / on land
+        if maxp.y < 1 or minp.y > 1000 then
+            return
+        end
+
+        local pr = PseudoRandom and PseudoRandom(seed + 42) or {
+            next = function(self, min, max)
+                return math.random(min, max)
+            end
+        }
+
+        -- Attempt placing 1-3 GOOGLE word lines per chunk
+        local attempts = pr:next(1, 3)
+        for _ = 1, attempts do
+            -- Choose a random X, Z within chunk boundaries
+            -- Ensure room for 6 blocks along chosen axis
+            local axis = pr:next(0, 1) -- 0: along X, 1: along Z
+            local rx = (axis == 0) and pr:next(minp.x, maxp.x - 6) or pr:next(minp.x, maxp.x)
+            local rz = (axis == 1) and pr:next(minp.z, maxp.z - 6) or pr:next(minp.z, maxp.z)
+
+            -- Scan downwards from maxp.y to find surface land
+            local top_y = math.min(maxp.y, 200)
+            local bottom_y = math.max(minp.y, 1)
+
+            local ground_y = nil
+            for y = top_y, bottom_y, -1 do
+                local node = minetest.get_node({x = rx, y = y, z = rz})
+                local nodename = node.name
+                if nodename ~= "air" and nodename ~= "ignore" then
+                    -- Check if it is a solid walkable surface node (not water/liquids)
+                    local def = minetest.registered_nodes[nodename]
+                    if def and (def.walkable == true or def.walkable == nil) and def.liquidtype == "none" then
+                        ground_y = y
+                    end
+                    break
+                end
+            end
+
+            if ground_y and ground_y >= bottom_y and (ground_y + 1) <= maxp.y then
+                -- Check if space above is clear and flat enough for 6 blocks
+                local can_place = true
+                for i = 0, 5 do
+                    local px = (axis == 0) and (rx + i) or rx
+                    local pz = (axis == 1) and (rz + i) or rz
+
+                    local above = minetest.get_node({x = px, y = ground_y + 1, z = pz})
+                    local below = minetest.get_node({x = px, y = ground_y, z = pz})
+                    local below_def = minetest.registered_nodes[below.name]
+
+                    -- Must have air above and solid land below
+                    if above.name ~= "air" or not below_def or below_def.liquidtype ~= "none" then
+                        can_place = false
+                        break
+                    end
+                end
+
+                if can_place then
+                    for i = 0, 5 do
+                        local px = (axis == 0) and (rx + i) or rx
+                        local pz = (axis == 1) and (rz + i) or rz
+                        minetest.set_node({x = px, y = ground_y + 1, z = pz}, {name = google_letters[i + 1]})
+                    end
+                end
+            end
+        end
+    end)
 end
