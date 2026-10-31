@@ -1,0 +1,62 @@
+# Jules Mod for Luanti / Minetest
+
+> *"We say goodbye to Google Jules. Most loved tool in the world. GOODBYE."*
+
+A memorial mod for **Luanti** (formerly **Minetest**) introducing the **Jules Monster Mob**, a custom **Spawn Egg**, natural world spawning, and 4 Google Font letter blocks (**G**, **O**, **L**, **E**).
+
+---
+
+## Features
+
+### 1. Jules Monster Mob (`jules:jules`)
+- Powered by the **Mobs Redo** (`mobs`) API.
+- Aggressive monster mob that roams the world, attacking players and hostile intruders.
+- Drops Google Font letter blocks (`jules:block_g`, `jules:block_o`, `jules:block_l`, `jules:block_e`) and mese crystal fragments when defeated.
+- Broadcasts a memorial message to the server chat upon death:
+  > *"Goodbye Jules! You were the most loved tool in the world."*
+
+### 2. Spawn Egg
+- Creative / inventory spawn egg (`jules:jules` / "Spawn Jules") allowing players to spawn Jules anytime.
+- Uses a custom spotted purple egg texture (`jules_egg.png`).
+
+### 3. Natural Spawning
+- Jules spawns naturally in the Luanti world!
+- Spawns at night / in dark subterranean areas (light level 0-8) on dirt and stone nodes (`group:dirt`, `group:stone`, `default:dirt_with_grass`, etc.).
+
+### 4. Google Font Letter Blocks (`G`, `O`, `L`, `E`)
+- Four commemorative decorative building blocks rendered using Google's signature typeface (Roboto Bold) and Google's signature brand colors:
+  - **G Block** (`jules:block_g`): Google Blue (`#4285F4`)
+  - **O Block** (`jules:block_o`): Google Red (`#EA4335`)
+  - **L Block** (`jules:block_l`): Google Yellow (`#FBBC05`)
+  - **E Block** (`jules:block_e`): Google Green (`#34A853`)
+- **Crafting Recipes**:
+  - `dye:blue` + `default:stone` $\rightarrow$ `jules:block_g`
+  - `dye:red` + `default:stone` $\rightarrow$ `jules:block_o`
+  - `dye:yellow` + `default:stone` $\rightarrow$ `jules:block_l`
+  - `dye:green` + `default:stone` $\rightarrow$ `jules:block_e`
+  - In addition, letter blocks can be cycled in a crafting grid: `G` $\rightarrow$ `O` $\rightarrow$ `L` $\rightarrow$ `E` $\rightarrow$ `G`.
+
+---
+
+## Requirements & Dependencies
+
+- **Luanti** / **Minetest** 5.0.0 or later
+- **default** (part of Minetest Game / Luanti default game)
+- **mobs** (Mobs Redo API by TenPlus1)
+
+---
+
+## Installation
+
+1. Copy or clone this repository into your Luanti `mods/` folder as `jules`.
+2. Enable `mobs` (Mobs Redo) and `jules` in your world configuration.
+3. Launch Luanti and explore your world!
+
+---
+
+## License
+
+See `LICENSE.md` for full licensing information:
+- **Code**: MIT License
+- **Font Assets**: Google Roboto (Apache License, Version 2.0)
+- **Jules Artwork**: Google Jules avatar/mascot logo, fair use memorial tribute
