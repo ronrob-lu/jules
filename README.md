@@ -1,8 +1,10 @@
 # Jules Mod for Luanti / Minetest
 
+> Jules will wind down on December 31, 2026. You have until November 11th to continue finishing up sessions. After the 11th of November, we will be turning it to read-only until end of year. Try using Google Antigravity for agentic development.
+
 > *"We say goodbye to Google Jules. Most loved tool in the world. GOODBYE."*
 
-A memorial mod for **Luanti** (formerly **Minetest**) introducing the **Jules Monster Mob**, a custom **Spawn Egg**, natural world spawning, and 4 Google Font letter blocks (**G**, **O**, **L**, **E**).
+This mod was created in tribute following the announcement of Jules winding down. A memorial mod for **Luanti** (formerly **Minetest**) introducing the **Jules Monster Mob**, a custom **Spawn Egg**, natural world spawning, and 4 Google Font letter blocks (**G**, **O**, **L**, **E**).
 
 ---
 
